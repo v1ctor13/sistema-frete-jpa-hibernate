@@ -12,7 +12,7 @@ public class CategoriaFrete {
     @Id @GeneratedValue
     private int id;
 
-    @OneToMany
+    @OneToMany(mappedBy = "categoriaFrete")
     private Collection<Frete> fretes;
 
     private double desconto;

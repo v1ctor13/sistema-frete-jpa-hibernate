@@ -15,7 +15,7 @@ public class Veiculo {
     @ManyToOne
     private Filial filial;
 
-    @OneToMany
+    @OneToMany(mappedBy = "veiculo")
     private Collection<Frete> fretes;
 
     private String numeroPlaca;

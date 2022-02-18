@@ -11,7 +11,7 @@ import java.util.Collection;
 @Entity
 public class Cliente extends PessoaFisica{
 
-    @OneToMany
+    @OneToMany(mappedBy = "cliente")
     private Collection<Frete> frete;
 
     public Cliente(String nome, String endereco, String telefone, Collection<Frete> frete) {

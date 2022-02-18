@@ -9,10 +9,10 @@ public class Filial {
     @Id @GeneratedValue
     private int id;
 
-    @OneToMany
+    @OneToMany(mappedBy = "filial")
     private Collection<Funcionario> funcionarios;
 
-    @OneToMany
+    @OneToMany(mappedBy = "filial")
     private Collection<Veiculo> veiculos;
 
     private String nome;

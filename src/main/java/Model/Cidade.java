@@ -10,13 +10,15 @@ public class Cidade {
     private int id;
 
     @ManyToMany
-    @JoinTable( name="Distancia" )
+    @JoinTable( name = "Distancia",
+                joinColumns = @JoinColumn(name = "cidadeOrigem_id"),
+                inverseJoinColumns = @JoinColumn(name = "cidadeDestino_id"))
     private Collection<Cidade> distancias;
 
-    @OneToMany
+    @OneToMany(mappedBy = "cidadeOrigem")
     private Collection<Frete> fretesOrigem;
 
-    @OneToMany
+    @OneToMany(mappedBy = "cidadeDestino")
     private Collection<Frete> fretesDestino;
 
     private String nome;
@@ -31,4 +33,48 @@ public class Cidade {
     }
 
     public Cidade() {}
+
+    public int getId() {
+        return id;
+    }
+
+    public Collection<Cidade> getDistancias() {
+        return distancias;
+    }
+
+    public void setDistancias(Collection<Cidade> distancias) {
+        this.distancias = distancias;
+    }
+
+    public Collection<Frete> getFretesOrigem() {
+        return fretesOrigem;
+    }
+
+    public void setFretesOrigem(Collection<Frete> fretesOrigem) {
+        this.fretesOrigem = fretesOrigem;
+    }
+
+    public Collection<Frete> getFretesDestino() {
+        return fretesDestino;
+    }
+
+    public void setFretesDestino(Collection<Frete> fretesDestino) {
+        this.fretesDestino = fretesDestino;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 }

@@ -9,7 +9,7 @@ public class TipoVeiculo {
     @Id @GeneratedValue
     private int id;
 
-    @OneToMany
+    @OneToMany(mappedBy = "tipoVeiculo")
     private Collection<Veiculo> veiculos;
 
     private String descricao;

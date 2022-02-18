@@ -6,6 +6,9 @@ import java.util.Collection;
 @Entity
 public class Funcionario extends PessoaFisica{
 
+    @Id @GeneratedValue
+    private int id;
+
     private int matricula;
 
     @ManyToOne

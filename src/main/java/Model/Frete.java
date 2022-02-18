@@ -1,7 +1,5 @@
 package Model;
 
-import org.hibernate.dialect.CUBRIDDialect;
-
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -18,22 +16,32 @@ public class Frete {
     private CategoriaFrete categoriaFrete;
 
     @ManyToOne
+    private Veiculo veiculo;
+
+    @ManyToOne
     private Cidade cidadeOrigem;
 
     @ManyToOne
     private Cidade cidadeDestino;
 
-    @OneToMany
+    @OneToMany(mappedBy = "frete")
     private Collection<ItemFrete> itens;
+
+    @OneToOne
+    private Parametro parametro;
 
 
     private int codigo;
     private double valor;
     private long numeroNotaFiscal;
 
-    public Frete(Cliente cliente, CategoriaFrete categoriaFrete, Collection<ItemFrete> itens, int codigo, double valor, long numeroNotaFiscal) {
+    public Frete(Cliente cliente, CategoriaFrete categoriaFrete, Veiculo veiculo, Cidade cidadeOrigem,
+                 Cidade cidadeDestino, Collection<ItemFrete> itens, int codigo, double valor, long numeroNotaFiscal) {
         this.cliente = cliente;
         this.categoriaFrete = categoriaFrete;
+        this.veiculo = veiculo;
+        this.cidadeOrigem = cidadeOrigem;
+        this.cidadeDestino = cidadeDestino;
         this.itens = itens;
         this.codigo = codigo;
         this.valor = valor;
